@@ -1,5 +1,5 @@
 Flask
-PIL 
+Pillow
 numpy 
 skimage 
 tensorflow
