@@ -1,1 +1,5 @@
 Flask
+PIL 
+numpy 
+skimage 
+tensorflow
