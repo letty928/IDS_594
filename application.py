@@ -4,6 +4,11 @@ from PIL import Image
 import numpy as np
 from skimage import transform 
 import tensorflow as tf
+import os
+
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname)
 
 #Created a flask application with the name (__name__)
 app = Flask(__name__)
