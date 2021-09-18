@@ -1,5 +1,5 @@
 Flask
 Pillow
 numpy 
-skimage 
+scikit-image
 tensorflow
