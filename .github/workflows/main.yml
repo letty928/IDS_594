@@ -43,3 +43,11 @@ jobs:
           aws-access-key-id: ${{ secrets.ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.ACCESS_KEY }}
           aws-region: us-east-1
+
+      - name: creating ebs app
+        run: |
+          eb init image-classifier -p python-3.8 --region us-east-1
+      
+      - name: creating environment and deploying it 
+        run: |
+          (eb use flask-server && eb status flask-server && eb deploy) || eb create flask-server --elb-type application -i t2.micro --max-instances 1 --region us-east-1
