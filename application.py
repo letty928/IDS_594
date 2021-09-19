@@ -1,10 +1,10 @@
 #Importing libraries we need to run the model 
 from flask import Flask, request
-from PIL import Image 
-import numpy as np
-from skimage import transform 
-import tensorflow as tf
-import os
+# from PIL import Image 
+# import numpy as np
+# from skimage import transform 
+# import tensorflow as tf
+# import os
 
 # abspath = os.path.abspath(__file__)
 # dname = os.path.dirname(abspath)
