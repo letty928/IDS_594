@@ -11,21 +11,22 @@ dname = os.path.dirname(abspath)
 os.chdir(dname)
 
 #Created a flask application with the name (__name__)
-app = Flask(__name__)
-model = tf.keras.models.load_model('Models/my_save_model.h5')
+application = Flask(__name__)
+
 class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer',
                'dog', 'frog', 'horse', 'ship', 'truck']
 #loads saved CNN model and had the class names on here to help with labeling the prediction
 
 #Creating a route for the website 
-@app.route("/")
+@application.route("/")
 def home():
     return "IDS 594 Project"
 
 #Post to use for sending something to the website 
 #Also had to upload image and transform it to match dimensions for the CNN
-@app.route("/pred/", methods=["POST"])
+@application.route("/pred/", methods=["POST"])
 def pred():
+    model = tf.keras.models.load_model('Models/my_save_model.h5')
     file = request.files['image']
     image = Image.open(file.stream)
     image = np.array(image).astype('float32')/255
@@ -39,4 +40,4 @@ def pred():
 
 #launches when you run the program 
 if __name__ == '__main__':
-    app.run()
+    application.run()
