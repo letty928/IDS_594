@@ -63,4 +63,4 @@ jobs:
       
       - name: creating environment and deploying it 
         run: |
-          (eb use flask-server && eb status flask-server && eb deploy --timeout 5 -v) || eb create flask-server --elb-type application -i t2.micro --max-instances 1 --region us-east-1 -v
+          (eb use flask-server && eb status flask-server && eb deploy --timeout 5 -v) || eb create flask-server --elb-type application -i t2.small --max-instances 1 --region us-east-1 -v
