@@ -42,7 +42,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m ip install --upgraded pip
+          python -m pip install --upgraded pip
           pip install -r requirements.txt
 
       - name: install elastic beanstalk cli
