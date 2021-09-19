@@ -26,7 +26,7 @@ jobs:
         uses: actions/setup-python@v1
         with: 
           python-version: "3.8"
-      
+
       - name: Get pip cache dir 
         id: pip-cache 
         run: |
@@ -39,6 +39,11 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m ip install --upgraded pip
+          pip install -r requirements.txt
 
       - name: install elastic beanstalk cli
         run: |
@@ -58,4 +63,4 @@ jobs:
       
       - name: creating environment and deploying it 
         run: |
-          (eb use flask-server && eb status flask-server && eb deploy) || eb create flask-server --elb-type application -i t2.micro --max-instances 1 --region us-east-1
+          (eb use flask-server && eb status flask-server && eb deploy --timeout 5 -v) || eb create flask-server --elb-type application -i t2.micro --max-instances 1 --region us-east-1 -v
